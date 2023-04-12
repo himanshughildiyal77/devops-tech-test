@@ -434,8 +434,8 @@
        "Fn::Join": [
         "",
         [
-         "887860521594.dkr.ecr.eu-central-1.amazonaws.com/infra:",
-         {
+        { "Fn::Sub": "${AWS::AccountId}.dkr.ecr.eu-central-1.amazonaws.com/infra:" },
+        {
           "Ref": "SsmParameterValueTaskFlaskIMAGETAGC96584B6F00A464EAD1953AFF4B05118Parameter"
          }
         ]
