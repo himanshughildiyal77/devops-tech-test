@@ -434,8 +434,11 @@
        "Fn::Join": [
         "",
         [
-        { "Fn::Sub": "${AWS::AccountId}.dkr.ecr.eu-central-1.amazonaws.com/infra:" },
-        {
+         {
+          "Ref": "AWS::AccountId"
+         },
+        ".dkr.ecr.eu-central-1.amazonaws.com/infra:",
+         {
           "Ref": "SsmParameterValueTaskFlaskIMAGETAGC96584B6F00A464EAD1953AFF4B05118Parameter"
          }
         ]
@@ -709,7 +712,7 @@
       ]
      ]
     },
-    "RoleARN": "arn:aws:iam::975055404715:role/aws-service-role/ecs.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_ECSService",
+    "RoleARN":{ "Fn::Sub": "arn:aws:iam::${AWS::AccountId}:role/aws-service-role/ecs.application-autoscaling.amazonaws.com/AWSServiceRoleForApplicationAutoScaling_ECSService" },
     "ScalableDimension": "ecs:service:DesiredCount",
     "ServiceNamespace": "ecs"
    },
@@ -851,10 +854,7 @@
     "infradevpublicsubnetSubnet1RouteTableAssociationA660FF6A",
     "infradevpublicsubnetSubnet2DefaultRouteE1449F95",
     "infradevpublicsubnetSubnet2RouteTableAssociationD39752A2"
-   ],
-   "Metadata": {
-    "aws:cdk:path": "InfraStack/ALB/Resource"
-   }
+   ]
   },
   "ALBSecurityGroup8B8624F8": {
    "Type": "AWS::EC2::SecurityGroup",
@@ -872,9 +872,6 @@
     "VpcId": {
      "Ref": "infradevA81375B1"
     }
-   },
-   "Metadata": {
-    "aws:cdk:path": "InfraStack/ALB/SecurityGroup/Resource"
    }
   },
   "ALBSecurityGrouptoInfraStackFLASKservicesg20D3E71D5000D409FD2F": {
@@ -896,9 +893,6 @@
     },
     "FromPort": 5000,
     "ToPort": 5000
-   },
-   "Metadata": {
-    "aws:cdk:path": "InfraStack/ALB/SecurityGroup/to InfraStackFLASKservicesg20D3E71D:5000"
    }
   },
   "ALBListener3B99FF85": {
@@ -917,9 +911,6 @@
     },
     "Port": 80,
     "Protocol": "HTTP"
-   },
-   "Metadata": {
-    "aws:cdk:path": "InfraStack/ALB/Listener/Resource"
    }
   },
   "ALBListenerTargetGroupD5D64FBA": {
@@ -944,15 +935,6 @@
    },
    "Metadata": {
     "aws:cdk:path": "InfraStack/ALB/Listener/TargetGroup/Resource"
-   }
-  },
-  "CDKMetadata": {
-   "Type": "AWS::CDK::Metadata",
-   "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/31STW/CMAz9LbuHbLDDdmWMISQ0VXTiOrnBdIaSoHyApqr/fW7T0rJJO9l+dvzs50zk06N8uIOLG6ntYVRQJsvUgzoIhj5LVBNZbk5KzHZ6k8xEYukMHtOQafQ12HtrEzx+QFZgj/fY1DmjCDwZfS0WScgKUn2L+TKpzTv4BZNc4LuOltqj5YIBxJO00dTzrF9H1F6kqIIl/72wJpyaEf4Fljq36NwffN7AlUDlZDkrgmP2uqhz38DmUC/lDq+4I03dSr8Roz2QRjvA2rcp2jOpKFPrpgqKWqa6ycwE7StBcJTl2kQ5G5sYVqsRIHqVKEzOU65Mft2x8ysBpxMXNYpD8MYxA+mcr3ulsnl7w1skmg/Ln4AfpPFdz30DsE4FOE+qMLDNuI1WnDvzp5n29CvOvTS5KOVNPKwjVli3NZ0/yMfBrqsOwqoSa3Qm2KhqAhaO2B6uS1RCmy3Kvbs/j5/leCLHd3tHNLKsNh1RrqP9AXnz3mwRAwAA"
-   },
-   "Metadata": {
-    "aws:cdk:path": "InfraStack/CDKMetadata/Default"
    }
   }
  },
